@@ -17,15 +17,17 @@ export default function JokeList() {
 
   // randomize the jokes
   const shuffleJokes = () => {
+    if (jokes) {
       const j = Math.floor(Math.random() * jokes.length) // random index from 0 to .999
       setCurrentJoke(j)
     }
+  }
 
   return (
     <>
       <Joke joke={!jokes ? 'Loading...' : jokes[currentJoke].setup} />
       <Punchline punchline={jokes && jokes[currentJoke].punchline} />
-      <Button onPress={nextJoke} title='Next Joke' />
+      <Button onPress={shuffleJokes} title='Next Joke' />
     </>
   )
 }
